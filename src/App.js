@@ -1,28 +1,21 @@
-function App () {
-    const title = 'Blog Post'
-    const body = 'This is my post'
-    const comments = [
-        {id: 1, text: 'Comment 1'},
-        {id: 2, text: 'Comment 2'},
-        {id: 3, text: 'Comment 3'},
-    ]
+import { useState } from "react"
+import Header from "./components/Header"
 
+import FeedbackData from './data/feedbackdata'
+import FeedbackList from "./components/FeedbackList"
+
+function App () {
+    const [feedback, setFeedback] = useState(
+        FeedbackData
+    )
     return (
-        <div className='container'>
-            <h1>
-                {title}
-            </h1>      
-            <div className="comments">
-                <h1>Comments ({comments.length})</h1>
-                <ul>
-                    {comments.map((comment, index) => (
-                        <li>
-                            {comment.text}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </div>
+        <>
+            <Header />
+             <div className="container">
+                <FeedbackList feedback={feedback}  />   
+             </div>
+        </>
+
     )
 }
 
